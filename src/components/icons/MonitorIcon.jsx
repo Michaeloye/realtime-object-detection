@@ -1,20 +1,15 @@
 const MonitorIcon = ({ className }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 18 18"
-      className={className}
-      fill="none"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" className={className} fill="none">
       <path
-        stroke="#755AE2"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M16.5 8.918v.667c0 2.67-.668 3.33-3.33 3.33H4.83c-2.663 0-3.33-.667-3.33-3.33V4.83c0-2.663.667-3.33 3.33-3.33H6M9 12.915V16.5M1.5 9.75h15M5.625 16.5h6.75"
       />
       <path
-        stroke="#755AE2"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

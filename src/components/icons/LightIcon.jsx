@@ -1,20 +1,15 @@
 const LightIcon = ({ className }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      fill="none"
-      viewBox="0 0 18 18"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 18 18">
       <path
-        stroke="#755AE2"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="m9 5.918-.803 1.394c-.18.308-.03.563.323.563h.952c.36 0 .503.255.323.563L9 9.832"
       />
       <path
-        stroke="#755AE2"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
