@@ -96,7 +96,7 @@ export const checkMicrophone = async (setMicCheck) => {
 
 export const testInternetSpeed = async (setInternetSpeed) => {
   const imageUrl = '/internet-speed-image.jpg';
-  const fileSizeInBytes = 1_691_631;
+  const fileSizeInBytes = 1_200_663;
   const cacheBuster = `?nocache=${Date.now()}`;
 
   const startTime = Date.now();
