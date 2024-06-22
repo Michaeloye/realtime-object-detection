@@ -7,7 +7,7 @@ const CheckNotGoodIndicator = ({ icon: Icon, title, topIcon: TopIcon }) => {
       <p className="text-xs text-[#4a4a68]">{title}</p>
 
       <div className="w-4 h-4 rounded-full bg-[#755ae2] absolute top-1.5 right-1.5 flex items-center justify-center">
-        <TopIcon className="w-3 h-3 text-white" />
+        <TopIcon className="w-2 h-2 text-white" />
       </div>
     </div>
   );
