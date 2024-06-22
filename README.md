@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real Time Object Detection
 
-## Getting Started
+### Overview
 
-First, run the development server:
+This project is a Real Time Object Detection frontend application.
+The application is responsible for running system checks to confirm if the user's **webcam**, **microphone**, **internet speed**, **lighting** are properly set.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The project capitalizes on the object detection, it runs object detection on the stream coming from the user's **webcam**, if a person is not detected on the webcam it shows an error.
+
+Similarly, the **lighting** check capitalizes on the score value returned by the object detection function.
+
+The **microphone** check, accesses the user's microphone and determines if a certain audio value threshold is met to confirm if the microphone is properly functional
+
+The **internet speed** check runs a function to simulate the download of a small sized file in order to ascertain how fast the user's internet speed is.
+
+Built using: [Next JS](https://nextjs.org/), [Tensorflow](https://www.tensorflow.org/)
+
+Live link: [real-time-object-detection](https://michaeloye-realtime-object-detection.vercel.app/)
+
+# Web Preview
+
+![Web Preview](https://github.com/Michaeloye/realtime-object-detection/blob/main/RealObjectDetection.png)
+
+# Table of contents
+
+- [Project Title](#real-time-object-detection)
+- [Overview](#overview)
+- [Web Preview](#web-preview)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+- [Development](#development)
+
+# Installation
+
+[(Back to top)](#table-of-contents)
+
+To use this project, first clone the repo on your device using the command below:
+
+`git init`
+
+`git clone https://github.com/Michaeloye/realtime-object-detection.git`
+
+# Development
+
+[(Back to top)](#table-of-contents)
+
+After cloning the repository, change root directory to the project path
+
+To install the dependencies run
+
+```shell
+npm run install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Local Development
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npm run dev
+```
