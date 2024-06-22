@@ -94,14 +94,14 @@ export const checkMicrophone = async (setMicCheck) => {
     });
 };
 
-export const testInternetSpeed = async (setInternetSpeed) => {
+export const testInternetSpeed = async () => {
   const imageUrl = '/internet-speed-image.jpg';
-  const fileSizeInBytes = 594076;
+  const fileSizeInBytes = 1_200_663;
   const cacheBuster = `?nocache=${Date.now()}`;
 
   const startTime = Date.now();
 
-  fetch(imageUrl + cacheBuster)
+  return fetch(imageUrl + cacheBuster)
     .then((response) => {
       return response.blob();
     })
@@ -113,9 +113,10 @@ export const testInternetSpeed = async (setInternetSpeed) => {
       const speedInKbps = speedInBps / 1024;
       const speedInMbps = speedInKbps / 1024;
 
-      setInternetSpeed(speedInMbps.toFixed(2));
+      return speedInMbps.toFixed(2);
     })
     .catch((error) => {
       console.error('Error during speed test:', error);
+      return 0;
     });
 };
