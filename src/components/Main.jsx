@@ -40,6 +40,7 @@ const Main = () => {
   const [lightCheckValue, setLightCheckValue] = useState(0);
   const [micCheckValue, setMicCheckValue] = useState(0);
   const [internetSpeed, setInternetSpeed] = useState(0);
+  const [isCheckingInternetSpeed, setIsCheckingInternetSpeed] = useState(false);
 
   const [checksCompleted, setChecksCompleted] = useState(false);
   const [objectDetected, setObjectDetected] = useState('');
@@ -58,7 +59,6 @@ const Main = () => {
   };
 
   const runCoco = async () => {
-    setIsCountdown(true);
     let detectionDetails = null;
 
     const intervalId = setInterval(async () => {
@@ -92,12 +92,18 @@ const Main = () => {
 
   const startDetection = async () => {
     resetChecks();
+    setIsCountdown(true);
     const isAvailable = await isMicAndWebcamAvailable();
 
     if (isAvailable) {
       runCoco();
       await checkMicrophone(setMicCheckValue);
-      await testInternetSpeed(setInternetSpeed);
+
+      setIsCheckingInternetSpeed(true);
+      const speed = await testInternetSpeed();
+      console.log('Internet speed:', speed);
+      setIsCheckingInternetSpeed(false);
+      setInternetSpeed(speed);
     } else {
       setShowPermissionRequiredModal(true);
     }
@@ -205,7 +211,7 @@ const Main = () => {
 
               <div className="flex flex-col gap-4">
                 {/* INTERNET SPEED */}
-                {checksCompleted ? (
+                {!isCheckingInternetSpeed && checksCompleted ? (
                   internetSpeed >= INTERNET_SPEED_UPPER_LIMIT ? (
                     <CheckGoodIndicator icon={CheckIcon} title="Speed" topIcon={WifiIcon} />
                   ) : internetSpeed >= INTERNET_SPEED_LOWER_LIMIT ? (
@@ -214,7 +220,7 @@ const Main = () => {
                     <CheckNotGoodIndicator icon={FailedCheckIcon} title="Speed" topIcon={WifiIcon} />
                   )
                 ) : (
-                  <CheckIndicator icon={WifiIcon} title="Speed" />
+                  <CheckIndicator icon={WifiIcon} title="Speed" loading={isCheckingInternetSpeed && checksCompleted} />
                 )}
 
                 {/* LIGHTING */}
@@ -235,14 +241,14 @@ const Main = () => {
 
           <button
             className="flex mx-auto md:mx-0 justify-center items-center gap-2 p-3 bg-[#755ae2] text-white rounded-xl mt-7 min-w-[220px] disabled:opacity-70 disabled:cursor-not-allowed"
-            disabled={isCountdown || loading}
+            disabled={isCountdown || loading || isCheckingInternetSpeed}
             onClick={startDetection}
           >
             {isCountdown ? countdown : 'Take picture and continue'}
-            {loading && <Loader className="w-4 h-4 fill-white" />}
+            {(loading || (isCheckingInternetSpeed && checksCompleted)) && <Loader className="w-4 h-4 fill-white" />}
           </button>
 
-          {checksCompleted && !allChecksPassed && (
+          {checksCompleted && !allChecksPassed && !isCheckingInternetSpeed && (
             <p className="text-[#ff5f56] text-sm mt-2">
               Some checks failed to pass. Please ensure that your webcam, microphone, internet speed, and lighting are
               in good condition.
