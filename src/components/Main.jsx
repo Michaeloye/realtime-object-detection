@@ -108,6 +108,7 @@ const Main = () => {
       setInternetSpeed(speed);
     } else {
       setShowPermissionRequiredModal(true);
+      setIsCountdown(false);
     }
   };
 
