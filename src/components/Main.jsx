@@ -9,8 +9,10 @@ import WifiIcon from '~/components/icons/WifiIcon';
 import LightIcon from '~/components/icons/LightIcon';
 import MicIcon from '~/components/icons/MicIcon';
 import CheckIcon from '~/components/icons/CheckIcon';
-import FailedCheckIcon from '~/components/icons/FailedCheckIcon';
+import MicSemiCheckIcon from '~/components/icons/MicSemiCheckIcon';
+import WifiSemiCheckIcon from '~/components/icons/WifiSemiCheckIcon';
 import LightSemiCheckIcon from '~/components/icons/LightSemiCheckIcon';
+import FailedCheckIcon from '~/components/icons/FailedCheckIcon';
 import StartAssessmentModal from '~/components/modals/StartAssessmentModal';
 import PermissionRequiredModal from '~/components/modals/PermissionRequiredModal';
 import * as tf from '@tensorflow/tfjs';
@@ -200,7 +202,7 @@ const Main = () => {
                   micCheckValue >= MIC_UPPER_LIMIT ? (
                     <CheckGoodIndicator icon={CheckIcon} title="Gadget mic" topIcon={MicIcon} />
                   ) : micCheckValue >= MIC_LOWER_LIMIT ? (
-                    <CheckNotGoodIndicator icon={LightSemiCheckIcon} title="Gadget mic" topIcon={MicIcon} />
+                    <CheckNotGoodIndicator icon={MicSemiCheckIcon} title="Gadget mic" topIcon={MicIcon} />
                   ) : (
                     <CheckNotGoodIndicator icon={FailedCheckIcon} title="Gadget mic" topIcon={MicIcon} />
                   )
@@ -215,7 +217,7 @@ const Main = () => {
                   internetSpeed >= INTERNET_SPEED_UPPER_LIMIT ? (
                     <CheckGoodIndicator icon={CheckIcon} title="Speed" topIcon={WifiIcon} />
                   ) : internetSpeed >= INTERNET_SPEED_LOWER_LIMIT ? (
-                    <CheckNotGoodIndicator icon={LightSemiCheckIcon} title="Speed" topIcon={WifiIcon} />
+                    <CheckNotGoodIndicator icon={WifiSemiCheckIcon} title="Speed" topIcon={WifiIcon} />
                   ) : (
                     <CheckNotGoodIndicator icon={FailedCheckIcon} title="Speed" topIcon={WifiIcon} />
                   )
